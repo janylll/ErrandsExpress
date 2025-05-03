@@ -1,0 +1,8 @@
+.messagessidebar {
+    display: grid;
+    height: 100%;
+    border-right: 1px solid gray;
+    border-right-width: 100%;
+    padding: 5%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,242 @@
+.title1 {
+  font-family: "Unbounded";
+  font-weight: 800;
+  font-size: 100px;
+  line-height: 1;
+  text-align: right;
+  text-transform: uppercase;
+  background: linear-gradient(to right, rgb(236, 186, 49), gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  margin-right: 10%;
+  margin-top: 10%;
+  padding: 10px 0;
+}
+.pagenotfound {
+  font-family: "Unbounded";
+  font-weight: 800;
+  font-size: 100px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(to right, rgb(236, 186, 49), gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  margin-top: 18%;
+  padding: 10px 0;
+}
+.tagline {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 20px;
+  text-align: right;
+  text-transform: uppercase;
+  color: darkblue;
+  margin-top: 10px;
+  margin-right: 170px;
+}
+.tagline2 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  color: darkblue;
+  margin-top: 10px;
+}
+
+.goback-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.goback {
+  font-family: "Montserrat";
+  background-color: rgb(29, 29, 89);
+  color: white;
+  padding: 10px 20px;
+  align-content: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.goback:hover {
+  background: linear-gradient(150deg, darkblue, gold);
+  color: white;
+}
+
+.title2{
+  font-family: "Montserrat";
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 80px;
+  background: linear-gradient(150deg, darkblue,gold);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-alignment {
+  display: flex;
+  justify-content: center;  
+  align-items: flex-start;  
+  gap: 20px;                
+  flex-wrap: wrap;         
+  padding: 20px;
+}
+
+.card {
+  width: 250px;                
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(to top, rgb(236, 186, 49), darkblue) border-box;
+  border: 5px solid transparent;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.card .card-image{
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(to top, darkblue, rgb(236, 186, 49));
+  display: inline-block;
+
+
+}
+
+.card .card-name {
+  font-family: "Montserrat";
+  margin: 0;
+  font-size: 20px;
+  background: linear-gradient(to right,darkblue, rgb(236, 186, 49));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.card .card-mail {
+  font-family: "Montserrat";
+  margin: 0;
+  font-size: 15px;
+  background: linear-gradient(to right,darkblue, rgb(236, 186, 49));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe;
+}
+
+.footer {
+  font-family: "Montserrat";
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(150deg, darkblue,gold, darkblue);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 20px;
+}
+
+
+.header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(150deg, rgb(0, 0, 138), rgb(236, 186, 49));
+  padding: 10px 0;
+  color: white;
+  border-bottom: 1px solid #fff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  flex-wrap: wrap;
+}
+.logo {
+  font-family: "Unbounded";
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 2px; 
+  background: linear-gradient(to right, rgb(236, 186, 49), #fff8dc); 
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  margin: 0;
+  margin-top: 12px;
+  padding: 10px 0;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding: 0;
+
+}
+
+.nav-links li a {
+  font-family: "Montserrat";
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: darkblue;
+}
+
+hr {
+  border: none;
+  height: 2%;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  margin-top: 10px;
+}
+
+.header-logo {
+  width: 70px;
+  height: auto;
+  margin-top: 12px;
+  margin-left: 50px;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.description {
+  font-family: "Montserrat";
+  margin: 20px 50px 50px 50px;
+  text-align: center;
+  font-weight: bold;
+  word-spacing: 5px;
+  font-size: 30px;
+  background: linear-gradient(150deg, darkblue,gold);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

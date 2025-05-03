@@ -1,0 +1,297 @@
+
+.auth-wrapper {
+  font-family: "Montserrat";
+  min-height: 100vh;
+  background: #ffffff;
+  position: relative;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  overflow-y: auto;
+}
+
+.remember-me-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remember-me-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+
+}
+
+.remember-me-group label {
+  white-space: nowrap;
+  font-size: 16px; 
+  color: #000; 
+  margin-top: 7px;
+}
+
+
+.auth-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px); 
+  background: rgba(60, 60, 60, 0.4);
+  z-index: 1;
+}
+
+  .auth-box {
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgb(33, 33, 80);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    background: rgba(255,255,255,0.7);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255,255,255,0.35);
+  }  
+  
+.auth-form input {
+    font-family: "Montserrat";
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid darkblue;
+    border-radius: 8px;
+    
+}
+  
+.auth-form button {
+    width: 100%;
+    font-family: "Montserrat";
+    padding: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+    background: rgb(29, 29, 89);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+  
+.auth-form button:hover {
+    background: linear-gradient(150deg, darkblue,gold);
+}
+
+.toggle-auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.toggle-text {
+  font-family: "Montserrat";
+  color: rgb(29, 29, 89);
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+.toggle-auth-btn {
+  margin-top: 20px;
+  font-family: "Montserrat";
+  background-color: transparent;
+  color: rgb(29, 29, 89);
+  border: 2px solid rgb(29, 29, 89);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.toggle-auth-btn:hover {
+  background:  rgb(29, 29, 89);
+  color: white;
+}
+  
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: darkblue;
+    transition: background-color 0.4s ease;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: transform 0.4s ease;
+    border-radius: 50%;
+}
+  
+input:checked + .slider {
+    background-color: #ffbf00 ;
+}
+  
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+  
+.auth-form input,.auth-form button {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+.title3{
+    font-family: "Montserrat";
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    background: linear-gradient(150deg, darkblue,gold);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .input-group {
+    text-align: left;
+    margin: 12px 0;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: darkblue;
+  }
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .password-wrapper input {
+    padding-right: 40px;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 56%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: darkblue;
+    font-size: 18px;
+  }
+  .error-text {
+    font-family: "Montserrat";
+    color: crimson;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 30, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+ .modal-box {
+  font-family: "Montserrat";
+  color: rgb(29, 29, 89);
+  background: rgb(255, 255, 255);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 90%;
+  max-width: 490px; 
+  position: relative;
+}
+
+  
+ 
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .upload-group {
+    margin: 20px 0;
+    text-align: left;
+    padding: 0 10px; 
+}
+
+.upload-group label {
+    font-family: "Montserrat";
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    margin-left: 20px;
+}
+
+.upload-group input[type="file"] {
+    width: 100%;
+    margin: 0; 
+    margin-left: 20px;
+}
+
+.submit-upload {
+  font-family: "Montserrat";
+  background-color: rgb(29, 29, 89);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  width: 200px; 
+  display: block; 
+  margin: 20px auto 0; 
+}
+
+
+  
+  .submit-upload:hover {
+    background: linear-gradient(150deg, darkblue, gold);
+    color: white;
+  }
+  
+
+  .upload-error {
+    font-family: "Montserrat";
+    color: crimson;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+  }
