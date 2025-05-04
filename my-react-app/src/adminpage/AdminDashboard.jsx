@@ -1,16 +1,30 @@
-import { useState } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import '../dashboard/layout.css';
-import logo from '../assets/ErrandsLogo.png';
-function admindashboard() {
+import './admin.css';
+import '../dashboard/dashboard.css';
+function AdminDashboard() {
   return (
-    <div className='Pages'>
-      <header className='dashboard-header'>
-        <img src={logo} alt="Errands Express Logo" className="header-logo" />
-        <>ManageAccount</>
-      </header>
+  <div className='Pages2'>
+    <div className="dashboard-container">
+      <h1 className='title4'>Welcome Admin!</h1>
+      <div className="stats-cards">
+        <div className="card2">
+          <h2>#</h2>
+          <p>Total Accounts</p>
+        </div>
+        <div className="card2">
+          <h2>#</h2>
+          <p>Verify Accounts</p>
+        </div>
+        <div className="card2">
+          <h2>#</h2>
+          <p>Reports</p>
+        </div>
+        <div className="card2">
+          <h2>#</h2>
+          <p>Transactions</p>
+        </div>
+      </div>
     </div>
+  </div>
   );
 }
-
-export default admindashboard;
+export default AdminDashboard;
