@@ -1,50 +1,63 @@
 import { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/ErrandsLogo.png';
-import '../dashboard/layout.css';
+import './admin.css';
+
 
 function Layout2() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  const toggleDropdown = () => setDropdownOpen(prev => !prev);
 
   const handleLogout = () => {
-    navigate('/AdminLogin');
+    navigate('/adminlogin');
   };
 
   return (
-    <div className="layout-container">
-      <aside className="sidebar">
-        <nav className="Sidebarnav-links">
-          <NavLink to="manageaccount" className={({ isActive }) => isActive ? 'active-link' : ''}>Manage Account</NavLink>
-          <NavLink to="manageaccount" className={({ isActive }) => isActive ? 'active-link' : ''}>Reports</NavLink>
-          <NavLink to="manageaccount" className={({ isActive }) => isActive ? 'active-link' : ''}>Transactions</NavLink>
+    <div className="layout-container-admin">
+      {/* Sidebar */}
+      <aside className="sidebar-admin">
+        <nav className="Sidebarnav-links-admin">
+          <NavLink to="manage-account" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Manage Account
+          </NavLink>
+          <NavLink to="reports" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Reports
+          </NavLink>
+          <NavLink to="transactions" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Transactions
+          </NavLink>
         </nav>
       </aside>
 
-      <div className="content-area">
-        <header className="main-header">
-          <div className="header-left" onClick={() => navigate('/admindashboard')} style={{cursor: 'pointer'}}>
-            <img src={logo} alt="Errands Logo" className="sidebar-logo" />
-            <h1 className="logo-title" onClick={() => navigate('/admindashboard')} style={{cursor: 'pointer'}}>Errands Express</h1>
+      {/* Main Content Area */}
+      <div className="content-area-admin">
+        {/* Header */}
+        <header className="main-header-admin">
+          <div className="header-left-admin" onClick={() => navigate('/AdminDashboard')} style={{ cursor: 'pointer' }}>
+            <img src={logo} alt="Errands Logo-admin" className="sidebar-logo" />
+            <h1 className="logo-title-admin">Errands Express</h1>
           </div>
 
-          <div className="header-right">
-            <button className="hamburger-menu-btn" onClick={toggleDropdown}>
-              ☰
-            </button>
-
+          <div className="header-right-admin">
+            <button className="hamburger-menu-btn-admin" onClick={toggleDropdown}>☰</button>
             {dropdownOpen && (
-              <div className="dropdown-menu">
+              <div className="dropdown-menu-admin">
                 <ul>
-                <li onClick={() => navigate('/adminDashboard')}>Dashboard</li> 
-                <li>Settings</li>
+                  <li onClick={() => navigate('/AdminDashboard')}>Dashboard</li>
+                  <li>Settings</li>
                   <li onClick={handleLogout}>Log Out</li>
                 </ul>
               </div>
             )}
           </div>
         </header>
+
+        {/* Render child route content here */}
+        <main className="main-content-admin">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

@@ -81,26 +81,31 @@ function Auth() {
       setUploadError('Please upload both ID and Face pictures.');
       return;
     }
-
+  
     setUploadError('');
     setShowUploadModal(false);
     setShowSuccessModal(true);
-
-    setFormData({
-      fullname: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-
-    setUploads({
-      idPic: null,
-      facePic: null
-    });
-
+  
+    const newUser = {
+      id: Date.now(), // unique ID
+      fullname: formData.fullname,
+      email: formData.email,
+      idPic: URL.createObjectURL(uploads.idPic),
+      facePic: URL.createObjectURL(uploads.facePic)
+    };
+  
+    // Save to localStorage
+    const existing = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
+    existing.push(newUser);
+    localStorage.setItem('pendingVerifications', JSON.stringify(existing));
+  
+    // Reset form
+    setFormData({ fullname: '', email: '', password: '', confirmPassword: '' });
+    setUploads({ idPic: null, facePic: null });
     setShowPassword(false);
     setShowConfirmPassword(false);
   };
+  
 
   return (
     <div className='Auth'>

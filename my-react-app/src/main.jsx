@@ -3,15 +3,18 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import './log-in/Auth.css';
 import App from './App.jsx';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import SignUp from './log-in/Auth.jsx';
 import NotFoundPage from './NotFoundPage/Nopage.jsx';
+
 import Errands from './dashboard/Errands.jsx';
 import Layout from './dashboard/layout.jsx';
 import Notification from './dashboard/Notification.jsx';
 import RunnerMode from './dashboard/RunnerMode.jsx';
 import Inbox from './dashboard/Inbox.jsx';
-import Dashboard from './dashboard/dashboard.jsx'; 
+import Dashboard from './dashboard/dashboard.jsx';
+
 import ManageAccount from './adminpage/ManageAccount.jsx';
 import Layout2 from './adminpage/layout2.jsx';
 import Admin from './adminpage/admin-log-in.jsx';
@@ -21,14 +24,14 @@ const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/signup", element: <SignUp /> },
   { path: "*", element: <NotFoundPage /> },
-  { path: "/AdminLogin", element: <Admin /> },
+  { path: "/adminlogin", element: <Admin /> },
   {
-    path: "/adminDashboard",
+    path: "/AdminDashboard",
     element: <Layout2 />,
     children: [
-      { index: true, element: <AdminDashboard /> }, 
-      { path: "manageaccount", element: <ManageAccount /> }
-    ]
+      { index: true, element: <AdminDashboard /> },
+      { path: "manage-account", element: <ManageAccount /> },
+    ],
   },
   {
     path: "/dashboard",
@@ -39,7 +42,7 @@ const router = createBrowserRouter([
       { path: "runnermode", element: <RunnerMode /> },
       { path: "notification", element: <Notification /> },
       { path: "inbox", element: <Inbox /> },
-    ]
+    ],
   },
 ]);
 

@@ -62,7 +62,7 @@ function Admin() {
         }}
       >
         <div className="auth-box">
-          <h1 className='title3'>Admin Login</h1>
+          <h1 className='title3'>Welcome Admin!</h1>
 
           <form className="auth-form" onSubmit={handleSubmit}>
             <div className="input-group">
