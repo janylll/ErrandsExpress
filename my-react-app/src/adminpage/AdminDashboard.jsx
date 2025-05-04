@@ -16,10 +16,6 @@ function AdminDashboard() {
         </div>
         <div className="card2">
           <h2>#</h2>
-          <p>Reports</p>
-        </div>
-        <div className="card2">
-          <h2>#</h2>
           <p>Transactions</p>
         </div>
       </div>

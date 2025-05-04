@@ -189,14 +189,24 @@ function ManageAccount() {
     ));
   };
 
-    useEffect(() => {
-      const stored = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
-      setAccounts(prev => ({
-        ...prev,
-        verification: [...prev.verification, ...stored]
-      }));
-      localStorage.removeItem('pendingVerifications'); // optional: clear after loading
-    }, []);
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
+  
+    // Fetch newly reported accounts
+    const savedReports = JSON.parse(localStorage.getItem('reportedUsers') || '[]');
+  
+    const uniqueNewReports = savedReports.filter(nr =>
+      !accounts.reported.some(existing => existing.email === nr.email)
+    );
+  
+    setAccounts(prev => ({
+      ...prev,
+      verification: [...prev.verification, ...stored],
+      reported: [...prev.reported, ...uniqueNewReports]
+    }));
+  }, []);
+  
+  
 
   return (
     <div className="Pages">

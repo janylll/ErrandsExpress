@@ -3,15 +3,23 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/ErrandsLogo.png';
 import './admin.css';
 
-
 function Layout2() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [reportedUsers, setReportedUsers] = useState([]); // lifted state here
   const navigate = useNavigate();
 
   const toggleDropdown = () => setDropdownOpen(prev => !prev);
 
   const handleLogout = () => {
     navigate('/adminlogin');
+  };
+
+  // Function to report a user
+  const reportUser = (user) => {
+    setReportedUsers((prev) => {
+      if (prev.some((u) => u.email === user.email)) return prev; // prevent duplicates
+      return [...prev, user];
+    });
   };
 
   return (
@@ -22,18 +30,14 @@ function Layout2() {
           <NavLink to="manage-account" className={({ isActive }) => isActive ? 'active-link' : ''}>
             Manage Account
           </NavLink>
-          <NavLink to="reports" className={({ isActive }) => isActive ? 'active-link' : ''}>
-            Reports
-          </NavLink>
           <NavLink to="transactions" className={({ isActive }) => isActive ? 'active-link' : ''}>
             Transactions
           </NavLink>
         </nav>
       </aside>
 
-      {/* Main Content Area */}
+      {/* Main Content */}
       <div className="content-area-admin">
-        {/* Header */}
         <header className="main-header-admin">
           <div className="header-left-admin" onClick={() => navigate('/AdminDashboard')} style={{ cursor: 'pointer' }}>
             <img src={logo} alt="Errands Logo-admin" className="sidebar-logo" />
@@ -54,9 +58,9 @@ function Layout2() {
           </div>
         </header>
 
-        {/* Render child route content here */}
+        {/* Pass reportUser and reportedUsers via Outlet context */}
         <main className="main-content-admin">
-          <Outlet />
+          <Outlet context={{ reportUser, reportedUsers }} />
         </main>
       </div>
     </div>
