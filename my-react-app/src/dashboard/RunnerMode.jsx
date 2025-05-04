@@ -3,11 +3,12 @@ import logo from '../assets/ErrandsLogo.png';
 
 function RunnerMode() {
   const { posts, setPosts } = useOutletContext();
+  const availablePosts = posts.filter(post => !post.inInbox);
 
   const handleAcceptTask = (indexToAccept) => {
     setPosts(posts.map((post, idx) => {
       if (idx === indexToAccept) {
-        return { ...post, status: 'accepted' };
+        return { ...post, status: 'accepted', inInbox: true };
       }
       return post;
     }));
@@ -27,7 +28,8 @@ function RunnerMode() {
       <h2 className='title4'>Errands to Run</h2>
 
       <div className="feed">
-        {posts.map((post, index) => {
+      {availablePosts.map((post, index) => {
+
           const postedDateTime = new Date(post.postedAt);
           const formattedPostedDateTime = postedDateTime.toLocaleString("en-US", {
             month: "long",
@@ -70,10 +72,6 @@ function RunnerMode() {
                 <img src={post.imageUrl} alt="Uploaded" className="post-image" />
               )}
               <p className="post-content">{post.content}</p>
-
-              {post.status && (
-                <p className="post-status">Status: {post.status}</p>
-              )}
 
               <footer className='footerpost'>
                 <div className="due-info">

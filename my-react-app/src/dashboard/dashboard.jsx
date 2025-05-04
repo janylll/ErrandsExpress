@@ -79,10 +79,6 @@ function Dashboard() {
                 )}
                 <p className="post-content">{post.content}</p>
 
-                {post.status && (
-                  <p className="post-status">Status: {post.status}</p>
-                )}
-
                 <footer className='footerpost'>
                   <div className="due-info">
                   <p><strong>Destination:</strong> {post.destination}</p>

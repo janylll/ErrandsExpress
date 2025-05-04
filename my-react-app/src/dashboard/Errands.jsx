@@ -98,14 +98,16 @@ function Errands() {
                   </div>
 
                   <div className="post-footer">
-                    <button className="cancel-btn" onClick={() => handleCancelPost(index)}>
-                      cancel
-                    </button>
 
                   {post.status === 'pending' && (
-                    <button className="pending-btn" disabled>
-                      Pending
-                    </button>
+                    <>
+                      <button className="cancel-btn" onClick={() => handleCancelPost(index)}>
+                        cancel
+                      </button>
+                      <button className="pending-btn" disabled>
+                        Pending
+                      </button>
+                    </>
                   )}
 
                   {post.status === 'accepted' && (
