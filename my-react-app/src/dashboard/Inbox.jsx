@@ -5,8 +5,6 @@ import PostCard from './PostCard';
 
 const users = [
   { id: 1, name: 'John Doe', avatar: 'R' },
-  { id: 2, name: 'Jane Smith', avatar: 'S' },
-  { id: 3, name: 'Admin', avatar: 'A' }
 ];
 
 function Inbox() {

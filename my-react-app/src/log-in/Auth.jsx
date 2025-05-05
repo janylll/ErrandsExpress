@@ -87,19 +87,17 @@ function Auth() {
     setShowSuccessModal(true);
   
     const newUser = {
-      id: Date.now(), // unique ID
+      id: Date.now(),
       fullname: formData.fullname,
       email: formData.email,
       idPic: URL.createObjectURL(uploads.idPic),
       facePic: URL.createObjectURL(uploads.facePic)
     };
-  
-    // Save to localStorage
+ 
     const existing = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
     existing.push(newUser);
     localStorage.setItem('pendingVerifications', JSON.stringify(existing));
-  
-    // Reset form
+ 
     setFormData({ fullname: '', email: '', password: '', confirmPassword: '' });
     setUploads({ idPic: null, facePic: null });
     setShowPassword(false);

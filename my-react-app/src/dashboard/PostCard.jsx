@@ -1,6 +1,6 @@
-// PostCard.js
+
 import React from 'react';
-import './inbox.css'; // Or wherever your styles are
+import './inbox.css'; 
 
 function PostCard({ post, index, onComplete }) {
   const dueDateObj = new Date(post.deadlineDate);

@@ -191,8 +191,6 @@ function ManageAccount() {
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
-  
-    // Fetch newly reported accounts
     const savedReports = JSON.parse(localStorage.getItem('reportedUsers') || '[]');
   
     const uniqueNewReports = savedReports.filter(nr =>

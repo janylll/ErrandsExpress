@@ -51,7 +51,6 @@ function RunnerMode() {
             hour12: true,
           });
 
-          // Format Due Date
           const formattedDueDate = new Date(post.deadlineDate).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",

@@ -13,8 +13,6 @@ function Layout2() {
   const handleLogout = () => {
     navigate('/adminlogin');
   };
-
-  // Function to report a user
   const reportUser = (user) => {
     setReportedUsers((prev) => {
       if (prev.some((u) => u.email === user.email)) return prev; // prevent duplicates
