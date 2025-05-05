@@ -193,16 +193,23 @@ function ManageAccount() {
     const stored = JSON.parse(localStorage.getItem('pendingVerifications') || '[]');
     const savedReports = JSON.parse(localStorage.getItem('reportedUsers') || '[]');
   
-    const uniqueNewReports = savedReports.filter(nr =>
-      !accounts.reported.some(existing => existing.email === nr.email)
-    );
+    const mergeUnique = (existing, incoming, key = 'email') => {
+      const existingMap = new Map(existing.map(item => [item[key], item]));
+      incoming.forEach(item => {
+        if (!existingMap.has(item[key])) {
+          existingMap.set(item[key], item);
+        }
+      });
+      return Array.from(existingMap.values());
+    };
   
     setAccounts(prev => ({
       ...prev,
-      verification: [...prev.verification, ...stored],
-      reported: [...prev.reported, ...uniqueNewReports]
+      verification: mergeUnique(prev.verification, stored),
+      reported: mergeUnique(prev.reported, savedReports)
     }));
   }, []);
+  
   
   
 
