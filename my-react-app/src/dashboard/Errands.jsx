@@ -1,23 +1,46 @@
 import React, { useState } from 'react';
-import PostModal from './PostModal'; 
+import PostModal from './PostModal';
 import { useOutletContext } from 'react-router-dom';
 import UserProfileDisplay from './ProfileDisplay';
-
+import TransactionModal from './TransactionModal';
 
 function Errands() {
   const [showModal, setShowModal] = useState(false);
   const { posts, setPosts, userProfile } = useOutletContext();
+  const [showTransactionModal, setShowTransactionModal] = useState(false);
+  const [transactionPostIndex, setTransactionPostIndex] = useState(null);
+  const userType = userProfile.role; 
 
-  
-  const handleConfirmComplete = (indexToConfirm) => {
-    setPosts(posts.map((post, idx) => {
-      if (idx === indexToConfirm) {
-        return { ...post, status: 'completed' };
-      }
-      return post;
-    }));
+  const adminInfo = {
+    gcashNumber: '09171234567',
+    mayaNumber: '09179876543',
+    name: 'Admin Name',
   };
-  
+
+  const handleConfirmComplete = (indexToConfirm) => {
+    setTransactionPostIndex(indexToConfirm);
+    setShowTransactionModal(true);
+  };
+
+  const handleTransactionSubmit = (data) => {
+    console.log('Transaction Submitted:', data);
+
+    if (transactionPostIndex !== null) {
+      setPosts(posts.map((post, idx) => {
+        if (idx === transactionPostIndex) {
+          return {
+            ...post,
+            transactionData: data,
+            status: 'completed',
+          };
+        }
+        return post;
+      }));
+    }
+
+    setTransactionPostIndex(null);
+    setShowTransactionModal(false);
+  };
 
   const handlePost = (newPost) => {
     const now = new Date();
@@ -93,15 +116,14 @@ function Errands() {
                 />
               )}
               <p className="post-content">{post.content}</p>
-                <footer className='footerpost'>
-                 <div className="due-info">
-                    <p><strong>Destination:</strong> {post.destination}</p>
-                    <p><strong>Due Time:</strong> {formattedTime}</p>
-                    <p><strong>Due Date:</strong> {formattedDate}</p>
-                  </div>
+              <footer className='footerpost'>
+                <div className="due-info">
+                  <p><strong>Destination:</strong> {post.destination}</p>
+                  <p><strong>Due Time:</strong> {formattedTime}</p>
+                  <p><strong>Due Date:</strong> {formattedDate}</p>
+                </div>
 
-                  <div className="post-footer">
-
+                <div className="post-footer">
                   {post.status === 'pending' && (
                     <>
                       <button className="cancel-btn" onClick={() => handleCancelPost(index)}>
@@ -130,14 +152,22 @@ function Errands() {
                       Completed
                     </button>
                   )}
-
-                  </div>
-                </footer>
+                </div>
+              </footer>
             </div>
           );
         })}
       </div>
+
+      <TransactionModal
+        show={showTransactionModal}
+        onClose={() => setShowTransactionModal(false)}
+        onSubmit={handleTransactionSubmit}
+        userType={userType}
+        adminInfo={adminInfo}
+      />
     </div>
   );
 }
+
 export default Errands;
