@@ -8,6 +8,14 @@ function Layout() {
   const navigate = useNavigate();
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const [posts, setPosts] = useState([]);
+  const [userProfile, setUserProfile] = useState({
+    name: 'E',
+    image: null
+  });
+  
+  const [modalOpen, setModalOpen] = useState(false);
+  const toggleModal = () => setModalOpen(!modalOpen);
+  
 
   const handleLogout = () => {
     navigate('/signup');
@@ -32,7 +40,17 @@ function Layout() {
           </div>
 
           <div className="header-right">
-            <div className="profile-circle">E</div>
+            <div className="profile-info" onClick={toggleModal}>
+              <div className="profile-circle">
+                {userProfile.image ? (
+                  <img src={userProfile.image} alt="Profile" className="profile-img" />
+                ) : (
+                  userProfile.name.charAt(0)
+                )}
+              </div>
+              <span className="profile-name">{userProfile.name}</span>
+            </div>
+
             <button className="hamburger-menu-btn" onClick={toggleDropdown}>
               ☰
             </button>
@@ -41,7 +59,6 @@ function Layout() {
               <div className="dropdown-menu">
                 <ul>
                   <li onClick={() => navigate('/dashboard')}>Dashboard</li> 
-                  <li>Settings</li>
                   <li onClick={handleLogout}>Log Out</li>
                 </ul>
               </div>
@@ -50,9 +67,43 @@ function Layout() {
         </header>
 
         <main className="page-content">
-        <Outlet context={{ posts, setPosts }} />
-
+        <Outlet context={{ posts, setPosts, userProfile }} />
         </main>
+                {modalOpen && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h2>Edit Profile</h2>
+              <label>
+                Name:
+                <input
+                  type="text"
+                  value={userProfile.name}
+                  onChange={(e) => setUserProfile({ ...userProfile, name: e.target.value })}
+                />
+              </label>
+              <label>
+                Profile Picture:
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        setUserProfile({ ...userProfile, image: reader.result });
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />
+              </label>
+              <div className="modal-buttons">
+                <button onClick={toggleModal}>Close</button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

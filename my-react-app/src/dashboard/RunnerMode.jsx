@@ -1,27 +1,42 @@
 import { useOutletContext } from 'react-router-dom';
-import logo from '../assets/ErrandsLogo.png';
+import UserProfileDisplay from './ProfileDisplay';
 
 function RunnerMode() {
-  const { posts, setPosts } = useOutletContext();
+  const { posts, setPosts, userProfile } = useOutletContext();
   const availablePosts = posts.filter(post => !post.inInbox);
-
-  const handleAcceptTask = (indexToAccept) => {
-    setPosts(posts.map((post, idx) => {
-      if (idx === indexToAccept) {
-        return { ...post, status: 'accepted', inInbox: true };
-      }
-      return post;
-    }));
+  const handleSubmit = () => {
+    onSubmit({
+      ...postData,
+      id: Date.now(), // Unique ID
+      status: 'pending',
+      postedAt: new Date().toISOString(),
+    });
+    onClose();
+    setPostData({
+      content: '',
+      deadlineDate: '',
+      deadlineTime: '',
+      destination: '',
+      imageUrl: '',
+    });
   };
-
-  const handleCompleteTask = (indexToComplete) => {
-    setPosts(posts.map((post, idx) => {
-      if (idx === indexToComplete) {
-        return { ...post, status: 'runner_completed' };
-      }
-      return post;
-    }));
+  
+  const handleAcceptTask = (acceptedPost) => {
+    setPosts(prevPosts =>
+      prevPosts.map(post =>
+        post === acceptedPost ? { ...post, status: 'accepted', inInbox: true } : post
+      )
+    );
   };
+  
+  const handleCompleteTask = (completedPost) => {
+    setPosts(prevPosts =>
+      prevPosts.map(post =>
+        post === completedPost ? { ...post, status: 'runner_completed' } : post
+      )
+    );
+  };
+  
 
   return (
     <div className='Pages'>
@@ -60,11 +75,12 @@ function RunnerMode() {
           return (
             <div key={index} className="post-card">
               <div className="post-header">
-                <div className="Newfeedprofile-circle">F</div>
-                <div className="name">
-                  <strong>User</strong>
-                  {post.createdAt && (<p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p> )}
-                </div>
+                <UserProfileDisplay name={userProfile.name} image={userProfile.image} />
+                {post.createdAt && (
+                  <div className="post-meta">
+                    <p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p>
+                  </div>
+                )}
               </div>
 
               {post.imageUrl && (
@@ -81,13 +97,13 @@ function RunnerMode() {
               </footer>
 
               {post.status === 'pending' && (
-                <button className="accept-btn" onClick={() => handleAcceptTask(index)}>
+                <button className="accept-btn" onClick={() => handleAcceptTask(post)}>
                   Accept Task
                 </button>
               )}
 
               {post.status === 'accepted' && (
-                <button className="complete-btn" onClick={() => handleCompleteTask(index)}>
+                <button className="complete-btn" onClick={() => handleCompleteTask(post)}>
                   Complete Task
                 </button>
               )}

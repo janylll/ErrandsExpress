@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PostModal from './PostModal'; 
 import { useOutletContext } from 'react-router-dom';
+import UserProfileDisplay from './ProfileDisplay';
 
 
 function Errands() {
   const [showModal, setShowModal] = useState(false);
-  const { posts, setPosts } = useOutletContext();
+  const { posts, setPosts, userProfile } = useOutletContext();
+
   
   const handleConfirmComplete = (indexToConfirm) => {
     setPosts(posts.map((post, idx) => {
@@ -76,11 +78,12 @@ function Errands() {
           return (
             <div key={index} className="post-card">
               <div className="post-header">
-                <div className="Newfeedprofile-circle">F</div>
-                <div className="name">
-                  <strong>User</strong>
-                  {post.createdAt && (<p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p> )}
-                </div>
+                <UserProfileDisplay name={userProfile.name} image={userProfile.image} />
+                {post.createdAt && (
+                  <div className="post-meta">
+                    <p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p>
+                  </div>
+                )}
               </div>
               {post.imageUrl && (
                 <img

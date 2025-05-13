@@ -1,8 +1,11 @@
 
 import React from 'react';
 import './inbox.css'; 
+import UserProfileDisplay from './ProfileDisplay';
+import { useOutletContext } from 'react-router-dom';
 
 function PostCard({ post, index, onComplete }) {
+  const { userProfile } = useOutletContext();
   const dueDateObj = new Date(post.deadlineDate);
   const [hour, minute] = post.deadlineTime?.split(':') || [];
   if (!isNaN(hour)) dueDateObj.setHours(hour, minute);
@@ -22,13 +25,10 @@ function PostCard({ post, index, onComplete }) {
   return (
     <div className="post-card">
       <div className="post-header">
-        <div className="Newfeedprofile-circle">F</div>
-        <div className="name">
-          <strong>User</strong>
-          {post.createdAt && (
-            <p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p>
-          )}
-        </div>
+      <UserProfileDisplay name={userProfile.name} image={userProfile.image} />
+        {post.createdAt && (
+          <p className="created-at">Posted on {post.createdAt.date} at {post.createdAt.time}</p>
+        )}
       </div>
 
       {post.imageUrl && (

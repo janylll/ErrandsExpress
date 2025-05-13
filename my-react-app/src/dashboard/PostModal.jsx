@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react'; 
 import './layout.css';
+import UserProfileDisplay from './ProfileDisplay';
+import { useOutletContext } from 'react-router-dom';
+
 
 function PostModal({ show, onClose, onSubmit }) {
+  const { userProfile } = useOutletContext();
   const [postData, setPostData] = useState({
     content: '',
     deadlineDate: '',
@@ -61,11 +65,7 @@ function PostModal({ show, onClose, onSubmit }) {
 
         <div className="modal-body">
           <div className="left-column">
-            <div className="user-info">
-              <div className="profile-circle">F</div>
-              <p><strong>User</strong></p>
-            </div>
-
+          <UserProfileDisplay name={userProfile.name} image={userProfile.image} />
             <div className="form-left">
               <div className="form-group">
                 <label htmlFor="deadlineDate">Due Date</label>

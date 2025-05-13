@@ -146,10 +146,39 @@ body {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
-  background: linear-gradient(150deg, darkblue,gold, darkblue);
+  background-color: #1a1a40;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+.footertitle{
+  font-family: "Unbounded";
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 2px; 
+  background: linear-gradient(to right, rgb(236, 186, 49), #fff8dc); 
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.footer-brand h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.footer-info p {
+  margin: 4px 0;
+  font-size: 14px;
 }
 
 

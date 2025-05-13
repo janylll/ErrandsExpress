@@ -4,6 +4,59 @@
   overflow: hidden;
   font-family: 'Montserrat';
 }
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="file"] {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  margin-bottom: 9px;
+  font-size: 14px;
+}
+
+.modal-buttons {
+  text-align: right;
+}
 
 .sidebar {
   width: 245px;
@@ -107,6 +160,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  flex-direction: row; /* This ensures name is on the right */
+}
+
+
+.profile-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(29, 29, 89);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .page-content {
@@ -434,7 +508,36 @@ margin-left: 20px;
   align-items: center;
   gap: 15px;
   border-bottom: 1px solid #ccc;
-  border-width: 100%;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.post-meta strong {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.post-meta span {
+  color: gray;
+  font-size: 13px;
 }
 
 .Newfeedprofile-circle{
@@ -450,9 +553,11 @@ margin-left: 20px;
   justify-content: center;
 }
 
-.name{
-  margin-top: 10px;
-  margin-bottom: 5px;
+.name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
 }
 .post-image {
   width: 100%;
@@ -473,9 +578,9 @@ margin-left: 20px;
   margin-bottom: 5px;
 }
 .created-at {
-  font-size: 13px;
+  margin: 0;
+  font-size: 14px;
   color: gray;
-  margin-top: 2px;
   font-weight: 500;
 }
 

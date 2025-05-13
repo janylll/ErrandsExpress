@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 import PostCard from './PostCard';
 
 const users = [
-  { id: 1, name: 'John Doe', avatar: 'R' },
+  { id: 1, name: 'BamBam', avatar: 'B' },
 ];
 
 function Inbox() {
@@ -79,8 +79,8 @@ function Inbox() {
 
       <div className="chat-main">
         <div className="chat-header">
-          <span className="profile-circle">R</span>
-          <span className="chat-username">John Doe</span>
+          <span className="profile-circle">B</span>
+          <span className="chat-username">BamBam</span>
         </div>
 
         {/* Overlay post card below header */}
